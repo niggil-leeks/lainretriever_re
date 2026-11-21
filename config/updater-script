@@ -1,0 +1,73 @@
+ui_print(" ");
+ui_print("       _                        ");
+ui_print("       \\`*-.                    ");
+ui_print("        )  _`-.                 ");
+ui_print("       .  : `. .                ");
+ui_print("       : _   '  \\               ");
+ui_print("       ; *` _.   `*-._          ");
+ui_print("       `-.-'          `-.       ");
+ui_print("         ;       `       `.     ");
+ui_print("         :.       .        \\    ");
+ui_print("         . \\  .   :   .-'   .   ");
+ui_print("         '  `+.;  ;  '      :   ");
+ui_print("         :  '  |    ;       ;-. ");
+ui_print("         ; '   : :`-:     _.`* ;");
+ui_print("      .*' /  .*' ; .*`- +'  `*'");
+ui_print("      `*-*   `*-*  `*-*'       ");
+ui_print(" ");
+ui_print("================================================");
+ui_print("    Lain's Project for Samsung Galaxy S20 FE    ");
+ui_print("================================================");
+ui_print("   Version   : Sixteen                          ");
+ui_print("   Codename  : Retriever                         ");
+ui_print("   Developer : Nihil@donottellmyname            ");
+ui_print("   Support   : t.me/nihildevelopment            ");
+ui_print("================================================");
+ui_print(" ");
+
+# --- Start patching dynamic partitions ---
+
+update_dynamic_partitions(package_extract_file("dynamic_partitions_op_list"), package_extract_file("unsparse_super_empty.img"));
+
+ui_print("   [+] Patching system...");
+show_progress(0.500000, 0);
+block_image_update(map_partition("system"), package_extract_file("system.transfer.list"), "system.new.dat.br", "system.patch.dat") ||
+  abort("E1001: Failed to update system image.");
+
+ui_print("   [+] Patching vendor...");
+show_progress(0.150000, 0);
+block_image_update(map_partition("vendor"), package_extract_file("vendor.transfer.list"), "vendor.new.dat.br", "vendor.patch.dat") ||
+  abort("E2001: Failed to update vendor image.");
+
+ui_print("   [+] Patching product...");
+show_progress(0.150000, 0);
+block_image_update(map_partition("product"), package_extract_file("product.transfer.list"), "product.new.dat.br", "product.patch.dat") ||
+  abort("E3001: Failed to update product image.");
+
+ui_print("   [+] Patching odm...");
+show_progress(0.150000, 0);
+block_image_update(map_partition("odm"), package_extract_file("odm.transfer.list"), "odm.new.dat.br", "odm.patch.dat") ||
+  abort("E4001: Failed to update odm image.");
+
+# --- End patching dynamic partitions ---
+
+ui_print("   [+] Patching dtbo...");
+show_progress(0.025000, 0);
+package_extract_file("dtbo.img", "/dev/block/bootdevice/by-name/dtbo");
+
+ui_print("   [+] Patching boot...");
+show_progress(0.025000, 0);
+package_extract_file("boot.img", "/dev/block/bootdevice/by-name/boot");
+
+ui_print("   [+] Setting prism carrier config...");
+is_mounted("/prism") || mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/prism", "/prism");
+run_program("/system/bin/test", "-e", "/prism/etc/carriers/single/TUR/default_application_order.xml") &&
+  run_program("/system/bin/sed", "-i", "s/SplashActivity\">/SplashActivity\" \/>/g", "/prism/etc/carriers/single/TUR/default_application_order.xml");
+is_mounted("/prism") && unmount("/prism");
+
+set_progress(1.000000);
+ui_print(" ");
+ui_print("================================================");
+ui_print("             Installation complete!             ");
+ui_print("================================================");
+ui_print(" ");

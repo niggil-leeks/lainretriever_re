@@ -1,0 +1,8 @@
+ota-required-cache=0
+ota-type=BLOCK
+post-build=samsung/dm2qxxx/qssi:16/BP2A.250605.031.A3/S916BXXS9EZCI:user/release-keys
+post-build-incremental=S916BXXS9EZCI
+post-sdk-level=16
+post-security-patch-level=2026-04-05
+post-timestamp=1774834953
+pre-device=r8q

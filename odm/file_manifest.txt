@@ -1,0 +1,48 @@
+
+7-Zip (z) 25.01 (arm64) : Copyright (c) 1999-2025 Igor Pavlov : 2025-08-03
+ 64-bit arm_v:8-A locale=C.UTF-8 Threads:8 OPEN_MAX:32768
+
+Scanning the drive for archives:
+1 file, 4194304 bytes (4096 KiB)
+
+Listing archive: /root/work/lain_dump/odm.img
+
+--
+Path = /root/work/lain_dump/odm.img
+Type = Ext
+Physical Size = 4194304
+Cluster Size = 4096
+Free Space = 2756608
+Modified = 2106-02-07 06:28:15
+Created = 2106-02-07 06:28:15
+Last Check Time = 2106-02-07 06:28:15
+Host OS = Linux
+Revision = 1
+inode Size = 256
+Code Page = UTF-8
+Label = odm
+Last Mounted = /odm
+ID = 6ef88fbcbd7a4c6a8181d1dca03661ec
+Characteristics = EXT_ATTR DIR_INDEX
+Incompatible Features = FILETYPE EXTENTS FLEX_BG
+Readonly-compatible Features = SPARSE_SUPER LARGE_FILE HUGE_FILE GDT_CSUM DIR_NLINK EXTRA_ISIZE
+Written KiB = 1
+
+   Date      Time    Attr         Size   Compressed  Name
+------------------- ----- ------------ ------------  ------------------------
+1969-12-31 23:59:59 D....                            lost+found
+1969-12-31 23:59:59 D....                            etc
+1969-12-31 23:59:59 .....         3315         4096  ueventd.rc
+1969-12-31 23:59:59 .....         1112         4096  etc/NOTICE.xml.gz
+1969-12-31 23:59:59 .....          900         4096  etc/build.prop
+1969-12-31 23:59:59 .....            0            0  etc/fs_config_dirs
+1969-12-31 23:59:59 .....            0            0  etc/fs_config_files
+1969-12-31 23:59:59 .....            0            0  etc/group
+1969-12-31 23:59:59 .....            0            0  etc/passwd
+1969-12-31 23:59:59 D....                            etc/selinux
+1969-12-31 23:59:59 .....      1358979      1359872  etc/selinux/precompiled_sepolicy
+1969-12-31 23:59:59 .....           65         4096  etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256
+1969-12-31 23:59:59 .....           65         4096  etc/selinux/precompiled_sepolicy.product_sepolicy_and_mapping.sha256
+1969-12-31 23:59:59 .....           65         4096  etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256
+------------------- ----- ------------ ------------  ------------------------
+1969-12-31 23:59:59            1364501      1384448  11 files, 3 folders
